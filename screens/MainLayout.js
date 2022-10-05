@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Image,
-    SafeAreaView
+    SafeAreaView,
+    TouchableOpacity
 } from 'react-native';
 
 import {
@@ -42,17 +43,39 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         >
             {/* Header */}
             <Header
-                sceneContainerStyle={{
+                containerStyle={{
                     height: 50,
                     paddingHorizontal: SIZES.padding,
                     marginTop: 40,
                     alignItems: 'center'
                 }}
                 title={selectedTab.toUpperCase()}
+                leftComponent={
+                    <TouchableOpacity
+                        style={{
+                            width: 40,
+                            height: 40,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderWidth: 1,
+                            borderColor: COLORS.gray2,
+                            borderRadius: SIZES.radius
+                        }}
+                        onPress={() => navigation.openDrawer()}
+                    >
+                        <Image source={icons.menu} />
+                    </TouchableOpacity>
+                }
             />
 
             {/* Content */}
-            <Text>MainLayout</Text>
+            <View
+                style={{
+                    flex: 1
+                }}
+            >
+                <Text>MainLayout</Text>
+            </View>
 
             {/* Footer */}
 

@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import { FONTS } from '../constants'
 
-const Header = ({ containerStyle, title }) => {
+const Header = ({ containerStyle, title, leftComponent, rightComponent }) => {
     return (
         <View
             style={{
@@ -14,6 +14,9 @@ const Header = ({ containerStyle, title }) => {
             }}
         >
             {/* Left */}
+            {leftComponent}
+
+            {/* Title */}
             <View
                 style={{
                     flex: 1,
@@ -24,9 +27,8 @@ const Header = ({ containerStyle, title }) => {
                 <Text style={{ ...FONTS.h3 }}>{title}</Text>
             </View>
 
-            {/* Title */}
-
             {/* Right */}
+            {rightComponent}
 
         </View>
     )
