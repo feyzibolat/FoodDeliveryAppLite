@@ -52,18 +52,40 @@ export const SIZES = {
     width,
     height
 };
+
+export let CustomFonts = {
+    'Poppins-Black': require('../assets/fonts/Poppins-Black.ttf'),
+    'Poppins-BlackItalic': require('../assets/fonts/Poppins-BlackItalic.ttf'),
+    'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-BoldItalic': require('../assets/fonts/Poppins-BoldItalic.ttf'),
+    'Poppins-ExtraBold': require('../assets/fonts/Poppins-ExtraBold.ttf'),
+    'Poppins-ExtraBoldItalic': require('../assets/fonts/Poppins-ExtraBoldItalic.ttf'),
+    'Poppins-ExtraLight': require('../assets/fonts/Poppins-ExtraLight.ttf'),
+    'Poppins-ExtraLightItalic': require('../assets/fonts/Poppins-ExtraLightItalic.ttf'),
+    'Poppins-Italic': require('../assets/fonts/Poppins-Italic.ttf'),
+    'Poppins-Light': require('../assets/fonts/Poppins-Light.ttf'),
+    'Poppins-LightItalic': require('../assets/fonts/Poppins-LightItalic.ttf'),
+    'Poppins-Medium': require('../assets/fonts/Poppins-Medium.ttf'),
+    'Poppins-MediumItalic': require('../assets/fonts/Poppins-MediumItalic.ttf'),
+    'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+    'Poppins-SemiBoldItalic': require('../assets/fonts/Poppins-SemiBoldItalic.ttf'),
+    'Poppins-Thin': require('../assets/fonts/Poppins-Thin.ttf'),
+    'Poppins-ThinItalic': require('../assets/fonts/Poppins-ThinItalic.ttf'),
+};
+
 export const FONTS = {
-    largeTitle: { fontSize: SIZES.largeTitle },
-    h1: { fontSize: SIZES.h1, lineHeight: 36 },
-    h2: { fontSize: SIZES.h2, lineHeight: 30 },
-    h3: { fontSize: SIZES.h3, lineHeight: 22 },
-    h4: { fontSize: SIZES.h4, lineHeight: 22 },
-    h5: { fontSize: SIZES.h5, lineHeight: 22 },
-    body1: { fontSize: SIZES.body1, lineHeight: 36 },
-    body2: { fontSize: SIZES.body2, lineHeight: 30 },
-    body3: { fontSize: SIZES.body3, lineHeight: 22 },
-    body4: { fontSize: SIZES.body4, lineHeight: 22 },
-    body5: { fontSize: SIZES.body5, lineHeight: 22 },
+    largeTitle: { fontFamily: "Poppins-Black", fontSize: SIZES.largeTitle },
+    h1: { fontFamily: "Poppins-Bold", fontSize: SIZES.h1, lineHeight: 36 },
+    h2: { fontFamily: "Poppins-Bold", fontSize: SIZES.h2, lineHeight: 30 },
+    h3: { fontFamily: "Poppins-SemiBold", fontSize: SIZES.h3, lineHeight: 22 },
+    h4: { fontFamily: "Poppins-SemiBold", fontSize: SIZES.h4, lineHeight: 22 },
+    h5: { fontFamily: "Poppins-SemiBold", fontSize: SIZES.h5, lineHeight: 22 },
+    body1: { fontFamily: "Poppins-Regular", fontSize: SIZES.body1, lineHeight: 36 },
+    body2: { fontFamily: "Poppins-Regular", fontSize: SIZES.body2, lineHeight: 30 },
+    body3: { fontFamily: "Poppins-Regular", fontSize: SIZES.body3, lineHeight: 22 },
+    body4: { fontFamily: "Poppins-Regular", fontSize: SIZES.body4, lineHeight: 22 },
+    body5: { fontFamily: "Poppins-Regular", fontSize: SIZES.body5, lineHeight: 22 },
 };
 
 const appTheme = { COLORS, SIZES, FONTS };

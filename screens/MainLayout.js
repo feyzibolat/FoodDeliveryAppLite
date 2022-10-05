@@ -2,8 +2,11 @@ import React from 'react';
 import {
     View,
     Text,
-    Image
+    Image,
+    SafeAreaView
 } from 'react-native';
+
+import Animated from 'react-native-reanimated'
 
 import {
     COLORS,
@@ -14,25 +17,19 @@ import {
     dummyData
 } from '../constants';
 
-const MainLayout = () => {
+const MainLayout = ({ drawerAnimationStyle }) => {
     return (
-        <View
+        <Animated.View
             style={{
                 flex: 1,
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                backgroundColor: 'white',
+                ...drawerAnimationStyle
             }}
         >
             <Text>MainLayout1</Text>
-            <Image
-                source={icons.cart}
-                style={{
-                    height: 35,
-                    width: 35,
-                    tintColor: COLORS.red
-                }}
-            />
-        </View>
+        </Animated.View>
     )
 }
 
