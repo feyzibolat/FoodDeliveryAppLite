@@ -6,6 +6,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import CustomDrawer from './navigation/CustomDrawer';
 
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import rootReducer from './stores/rootReducer';
+
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { CustomFonts } from './constants';
@@ -15,6 +20,11 @@ const _loadAssets = async () => {
 };
 
 const Stack = createStackNavigator();
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
 
 export default function App() {
   LogBox.ignoreAllLogs(true);
@@ -33,19 +43,21 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false
-        }}
-        initialRouteName={'Home'}
-      >
-        <Stack.Screen
-          name="Home"
-          component={CustomDrawer}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false
+          }}
+          initialRouteName={'Home'}
+        >
+          <Stack.Screen
+            name="Home"
+            component={CustomDrawer}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
