@@ -5,7 +5,8 @@ import {
     Image,
     SafeAreaView,
     TouchableOpacity,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    FlatList
 } from 'react-native';
 
 import {
@@ -26,6 +27,11 @@ import { connect } from 'react-redux'
 import { setSelectedTab } from '../stores/tab/tabActions'
 import { Header } from '../components'
 import { LinearGradient } from 'expo-linear-gradient';
+import Home from './Home/Home';
+import CartTab from './Cart/CartTab';
+import Search from './Search/Search';
+import Favourite from './Favourite/Favourite';
+import Notification from './Notification/Notification';
 
 const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainerStyle, onPress }) => {
     return (
@@ -62,7 +68,7 @@ const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainer
                         style={{
                             width: 20,
                             height: 20,
-                            tintColor: COLORS.gray
+                            tintColor: isFocused ? COLORS.white : COLORS.gray
                         }}
                     />
 
@@ -71,7 +77,7 @@ const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainer
                             numberOfLines={1}
                             style={{
                                 marginLeft: SIZES.base,
-                                color: COLORS.gray,
+                                color: COLORS.white,
                                 ...FONTS.h3
                             }}
                         >
@@ -85,6 +91,8 @@ const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainer
 }
 
 const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelectedTab }) => {
+
+    const flatListRef = React.useRef()
 
     //Reanimated Shared Value
 
@@ -166,6 +174,11 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
 
     React.useEffect(() => {
         if (selectedTab == constants.screens.home) {
+            flatListRef?.current?.scrollToIndex({
+                index: 0,
+                animated: false
+            })
+
             homeTabFlex.value = withTiming(4, { duration: 500 })
             homeTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -174,6 +187,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab == constants.screens.search) {
+            flatListRef?.current?.scrollToIndex({
+                index: 1,
+                animated: false
+            })
             searchTabFlex.value = withTiming(4, { duration: 500 })
             searchTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -182,6 +199,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab == constants.screens.cart) {
+            flatListRef?.current?.scrollToIndex({
+                index: 2,
+                animated: false
+            })
             cartTabFlex.value = withTiming(4, { duration: 500 })
             cartTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -190,6 +211,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab == constants.screens.favourite) {
+            flatListRef?.current?.scrollToIndex({
+                index: 3,
+                animated: false
+            })
             favouriteTabFlex.value = withTiming(4, { duration: 500 })
             favouriteTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -198,6 +223,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab == constants.screens.notification) {
+            flatListRef?.current?.scrollToIndex({
+                index: 4,
+                animated: false
+            })
             notificationTabFlex.value = withTiming(4, { duration: 500 })
             notificationTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -269,7 +298,33 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
                     justifyContent: "center"
                 }}
             >
-                <Text>Content</Text>
+                <FlatList
+                    ref={flatListRef}
+                    horizontal
+                    scrolEnabled={false}
+                    pagingEnabled
+                    snapToAlignment='center'
+                    snapToInterval={SIZES.width}
+                    showsHorizontalScrollIndicator={false}
+                    data={constants.bottom_tabs}
+                    keyExtractor={item => `${item.id}`}
+                    renderItem={({ item, index }) => {
+                        return (
+                            <View
+                                style={{
+                                    height: SIZES.height,
+                                    width: SIZES.width
+                                }}
+                            >
+                                {item.label == constants.screens.home && <Home />}
+                                {item.label == constants.screens.search && <Search />}
+                                {item.label == constants.screens.cart && <CartTab />}
+                                {item.label == constants.screens.favourite && <Favourite />}
+                                {item.label == constants.screens.notification && <Notification />}
+                            </View>
+                        )
+                    }}
+                />
             </View>
 
             {/* Footer */}
