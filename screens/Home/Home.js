@@ -10,7 +10,8 @@ import {
 import { FlatList } from 'react-native-gesture-handler'
 
 import {
-    HorizontalFoodCard
+    HorizontalFoodCard,
+    VerticalFoodCard
 } from '../../components'
 
 import { FONTS, SIZES, COLORS, icons, dummyData } from '../../constants'
@@ -49,6 +50,7 @@ const Home = () => {
     const [selectedCategoryId, setSelectedCategoryId] = React.useState(1)
     const [selectedMenuType, setSelectedMenuType] = React.useState(1)
     const [recommends, setRecommends] = React.useState([])
+    const [popular, setPopular] = React.useState([])
     const [menuList, setMenuList] = React.useState([])
 
     React.useEffect(() => {
@@ -58,11 +60,17 @@ const Home = () => {
     // Handler
 
     function handleChangeCategory(categoryId, menuTypeId) {
+        // Popular the recommends menu
+        let selectedPopular = dummyData.menu.find(a => a.name == "Popular")
+
         // Retrieve the recommends menu
         let selectedRecommend = dummyData.menu.find(a => a.name == "Recommended")
 
         // Find the menu based on the menuTypeId
         let selectedMenu = dummyData.menu.find(a => a.id === menuTypeId)
+
+        // Set the Popular menu based on the categoryId
+        setPopular(selectedPopular?.list.filter(a => a.categories.includes(categoryId)))
 
         // Set the recommends menu based on the categoryId
         setRecommends(selectedRecommend?.list.filter(a => a.categories.includes(categoryId)))
@@ -206,6 +214,31 @@ const Home = () => {
         )
     }
 
+    function renderPopularSection() {
+        return (
+            <Section
+                title="Popular Near You"
+                onPress={() => console.log("Popular")}
+            >
+                <FlatList
+                    data={popular}
+                    keyExtractor={item => `${item.id}`}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({ item, index }) => (
+                        <VerticalFoodCard
+                            containerStyle={{
+                                marginLeft: index == 0 ? SIZES.padding : 18,
+                                marginRight: index == popular.length - 1 ? SIZES.padding : 0
+                            }}
+                            item={item}
+                            onPress={() => console.log("Vertical Food Card")}
+                        />
+                    )}
+                />
+            </Section>
+        )
+    }
     return (
         <View
             style={{
@@ -223,6 +256,9 @@ const Home = () => {
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
                     <View>
+                        {/* Popular */}
+                        {renderPopularSection()}
+
                         {/* Recommended */}
                         {renderRecommendedSection()}
 
