@@ -68,6 +68,30 @@ const HorizontalFoodCard = ({ containerStyle, imageStyle, item, onPress }) => {
             </View>
 
             {/* Calories */}
+            <View
+                style={{
+                    flexDirection: 'row',
+                    position: 'absolute',
+                    top: 5,
+                    right: SIZES.radius
+                }}
+            >
+                <Image
+                    source={icons.calories}
+                    style={{
+                        width: 30,
+                        height: 30
+                    }}
+                />
+                <Text
+                    style={{
+                        color: COLORS.darkGray2,
+                        ...FONTS.body5
+                    }}
+                >
+                    {item.calories} Calories
+                </Text>
+            </View>
 
         </TouchableOpacity>
     )

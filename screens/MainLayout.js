@@ -6,8 +6,8 @@ import {
     SafeAreaView,
     TouchableOpacity,
     TouchableWithoutFeedback,
-    FlatList
 } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler'
 
 import {
     COLORS,
@@ -45,6 +45,7 @@ const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainer
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: COLORS.white,
+                        margin: 15
                     },
                     outerContainerStyle
                 ]}
@@ -324,6 +325,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
                             </View>
                         )
                     }}
+                    ListFooterComponent={<View style={{ height: 20 }} />}
                 />
             </View>
 
