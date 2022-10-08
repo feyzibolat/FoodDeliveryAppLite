@@ -9,6 +9,8 @@ import {
 
 import { FlatList } from 'react-native-gesture-handler'
 
+import { FilterModal } from '../'
+
 import {
     HorizontalFoodCard,
     VerticalFoodCard
@@ -52,6 +54,8 @@ const Home = () => {
     const [recommends, setRecommends] = React.useState([])
     const [popular, setPopular] = React.useState([])
     const [menuList, setMenuList] = React.useState([])
+
+    const [showFilterModal, setShowFilterModal] = React.useState(false)
 
     React.useEffect(() => {
         handleChangeCategory(selectedCategoryId, selectedMenuType)
@@ -119,7 +123,7 @@ const Home = () => {
 
                 {/* Filter Button */}
                 <TouchableOpacity
-                // onPress
+                    onPress={() => setShowFilterModal(true)}
                 >
                     <Image
                         source={icons.filter}
@@ -342,6 +346,13 @@ const Home = () => {
             {/* Search */}
             {renderSearch()}
 
+            {/* Filter */}
+            {showFilterModal &&
+                <FilterModal
+                    isVisible={showFilterModal}
+                    onClose={() => setShowFilterModal(false)}
+                />
+            }
 
             {/* List */}
             <FlatList
