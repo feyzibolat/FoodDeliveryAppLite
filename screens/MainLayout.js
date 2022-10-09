@@ -45,7 +45,7 @@ const TabButton = ({ label, icon, isFocused, outerContainerStyle, innerContainer
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: COLORS.white,
-                        margin: 15
+                        margin: 5
                     },
                     outerContainerStyle
                 ]}
