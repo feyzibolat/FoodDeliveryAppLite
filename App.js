@@ -5,6 +5,16 @@ import { LogBox } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import CustomDrawer from './navigation/CustomDrawer';
+import SplashScreen from 'react-native-splash-screen';
+
+import {
+  OnBoarding,
+
+  SignIn,
+  SignUp,
+  ForgotPassword,
+  Otp
+} from './screens'
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -29,6 +39,10 @@ const store = createStore(
 export default function App() {
   LogBox.ignoreAllLogs(true);
 
+  // React.useEffect(() => {
+  //   SplashScreen.hide();
+  // }, [])
+
   const [isReady, setReady] = useState(false);
 
   if (!isReady) {
@@ -50,8 +64,33 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}
-          initialRouteName={'Home'}
+          initialRouteName={'OnBoarding'}
         >
+          <Stack.Screen
+            name="OnBoarding"
+            component={OnBoarding}
+          />
+
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+          />
+
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+          />
+
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPassword}
+          />
+
+          <Stack.Screen
+            name="Otp"
+            component={Otp}
+          />
+
           <Stack.Screen
             name="Home"
             component={CustomDrawer}

@@ -330,13 +330,13 @@ const FilterModal = ({ isVisible, onClose }) => {
                     <View
                         style={{
                             position: 'absolute',
-                            bottom: 150,
+                            bottom: SIZES.height / 6.9,
                             left: 0,
                             right: 0,
                             height: 110,
                             paddingHorizontal: SIZES.padding,
                             paddingVertical: SIZES.radius,
-                            backgroundColor: COLORS.white
+                            backgroundColor: COLORS.gray2
                         }}
                     >
                         <TextButton
