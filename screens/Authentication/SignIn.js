@@ -4,17 +4,16 @@ import {
     Text
 } from 'react-native';
 
+import { AuthLayout } from '../'
+
 const SignIn = () => {
     return (
-        <View
-            style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}
+        <AuthLayout
+            title="Let's Sign You In"
+            subtitle="Welcome back. you've been missed"
         >
-            <Text>SignIn</Text>
-        </View>
+
+        </AuthLayout>
     )
 }
 

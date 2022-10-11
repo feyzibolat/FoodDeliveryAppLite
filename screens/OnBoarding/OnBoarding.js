@@ -212,7 +212,7 @@ const OnBoarding = ({ navigation }) => {
                             <View
                                 style={{
                                     flex: 1,
-                                    marginTop: -150,
+                                    marginTop: 0,
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     paddingHorizontal: SIZES.radius
