@@ -70,7 +70,7 @@ const AuthLayout = ({ title, subtitle, titleContainerStyle, children }) => {
                 </View>
 
                 {/* Content / Children */}
-
+                {children}
             </KeyboardAwareScrollView>
 
 
