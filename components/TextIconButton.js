@@ -2,12 +2,13 @@ import React from 'react'
 import {
     TouchableOpacity,
     Text,
-    Image
+    Image,
+    StyleSheet
 } from 'react-native'
 
 import { COLORS, SIZES, FONTS } from '../constants'
 
-const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, onPress }) => {
+const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconPosition, iconStyle, onPress }) => {
     return (
         <TouchableOpacity
             style={{
@@ -18,6 +19,16 @@ const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, on
             }}
             onPress={onPress}
         >
+            {iconPosition == "LEFT" &&
+                <Image
+                    source={icon}
+                    style={{
+                        ...styles.image,
+                        ...iconStyle
+                    }}
+                />
+            }
+
             <Text
                 style={{
                     ...FONTS.body3,
@@ -27,18 +38,27 @@ const TextIconButton = ({ containerStyle, label, labelStyle, icon, iconStyle, on
                 {label}
             </Text>
 
-            <Image
-                source={icon}
-                style={{
-                    marginLeft: 5,
-                    width: 20,
-                    height: 20,
-                    tintColor: COLORS.black,
-                    ...iconStyle
-                }}
-            />
+
+            {iconPosition == "RIGHT" &&
+                <Image
+                    source={icon}
+                    style={{
+                        ...styles.image,
+                        ...iconStyle
+                    }}
+                />
+            }
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    image: {
+        marginLeft: 5,
+        width: 20,
+        height: 20,
+        tintColor: COLORS.black
+    }
+})
 
 export default TextIconButton;
