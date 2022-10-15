@@ -7,8 +7,21 @@ import FilterModal from "./Home/FilterModal"
 // Search
 import Search from "./Search/Search";
 
+// Food
+import FoodDetail from "./Food/FoodDetail"
+
 // Cart
-import CartTab from "./Cart/CartTab"
+import Checkout from "./Cart/Checkout"
+import MyCart from "./Cart/MyCart"
+import Success from "./Cart/Success"
+
+// Card
+import AddCard from "./Card/AddCard"
+import MyCard from "./Card/MyCard"
+
+// Delivery
+import DeliveryStatus from "./Delivery/DeliveryStatus"
+import Map from "./Delivery/Map"
 
 // Favourite
 import Favourite from "./Favourite/Favourite";
@@ -38,7 +51,18 @@ export {
     Home,
     FilterModal,
     Search,
-    CartTab,
     Favourite,
     Notification,
+
+    FoodDetail,
+
+    Checkout,
+    MyCart,
+    Success,
+
+    AddCard,
+    MyCard,
+
+    DeliveryStatus,
+    Map
 }

@@ -134,6 +134,7 @@ const SignIn = ({ navigation }) => {
                         borderRadius: SIZES.radius,
                         backgroundColor: isEnableSignIn() ? COLORS.primary : COLORS.transparentPrimary
                     }}
+                    onPress={() => navigation.navigate("FoodDetail")}
                 />
 
                 {/* Sign Up */}
