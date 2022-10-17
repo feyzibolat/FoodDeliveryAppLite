@@ -7,6 +7,7 @@ import TextButton from "./TextButton";
 import TextIconButton from "./TextIconButton";
 import FormInput from "./FormInput";
 import CustomSwitch from "./CustomSwitch";
+import CartQuantityButton from "./CartQuantityButton";
 
 export {
     Header,
@@ -17,5 +18,6 @@ export {
     TextButton,
     TextIconButton,
     FormInput,
-    CustomSwitch
+    CustomSwitch,
+    CartQuantityButton
 }

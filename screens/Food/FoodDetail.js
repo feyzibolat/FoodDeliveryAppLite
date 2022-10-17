@@ -17,7 +17,8 @@ import {
 
 import {
     Header,
-    IconButton
+    IconButton,
+    CartQuantityButton
 } from '../../components'
 
 const FoodDetail = () => {
@@ -54,6 +55,12 @@ const FoodDetail = () => {
                             tintColor: COLORS.gray2
                         }}
                         onPress={() => console.log("Back")}
+                    />
+                }
+                rightComponent={
+                    <CartQuantityButton
+                        quantity={3}
+
                     />
                 }
             />
