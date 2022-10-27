@@ -6,7 +6,15 @@ import {
 
 import { COLORS, SIZES, FONTS } from '../constants'
 
-const TextButton = ({ label, labelStyle, disabled, buttonContainerStyle, onPress }) => {
+const TextButton = ({
+    label,
+    labelStyle,
+    label2 = "",
+    label2Style,
+    disabled,
+    buttonContainerStyle,
+    onPress
+}) => {
     return (
         <TouchableOpacity
             style={{
@@ -27,6 +35,20 @@ const TextButton = ({ label, labelStyle, disabled, buttonContainerStyle, onPress
             >
                 {label}
             </Text>
+
+            {label2 != "" &&
+                <Text
+                    style={{
+                        flex: 1,
+                        textAlign: 'right',
+                        color: COLORS.white,
+                        ...FONTS.h3,
+                        ...label2Style
+                    }}
+                >
+                    {label2}
+                </Text>
+            }
         </TouchableOpacity>
     )
 }
