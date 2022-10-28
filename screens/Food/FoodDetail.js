@@ -26,7 +26,7 @@ import {
     StepperInput,
 } from '../../components'
 
-const FoodDetail = () => {
+const FoodDetail = ({ navigation }) => {
 
     const [foodItem, setFoodItem] = React.useState(dummyData.vegBiryani)
     const [selectedSize, setSelectedSize] = React.useState("")
@@ -352,6 +352,7 @@ const FoodDetail = () => {
                     }}
                     label="Buy Now"
                     label2="$15.99"
+                    onPress={() => navigation.navigate("MyCart")}
                 />
             </View>
         )
