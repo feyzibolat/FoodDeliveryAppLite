@@ -76,7 +76,7 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}
-          initialRouteName={'MyCart'}
+          initialRouteName={'FoodDetail'}
         >
           <Stack.Screen
             name="OnBoarding"
