@@ -76,7 +76,7 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}
-          initialRouteName={'MyCard'}
+          initialRouteName={'MyCart'}
         >
           <Stack.Screen
             name="OnBoarding"
@@ -126,6 +126,7 @@ export default function App() {
           <Stack.Screen
             name="Success"
             component={Success}
+            options={{ gestureEnabled: false }}
           />
 
           <Stack.Screen
@@ -141,6 +142,7 @@ export default function App() {
           <Stack.Screen
             name="DeliveryStatus"
             component={DeliveryStatus}
+            options={{ gestureEnabled: false }}
           />
 
           <Stack.Screen

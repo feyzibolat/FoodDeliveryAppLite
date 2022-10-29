@@ -9,6 +9,7 @@ import { COLORS, SIZES, FONTS } from '../constants'
 
 const FormInput = ({
     containerStyle,
+    inputContainerStyle,
     label,
     placeholder,
     inputStyle,
@@ -20,6 +21,8 @@ const FormInput = ({
     autoCompleteType = 'off',
     autoCapitalize = 'none',
     errorMsg = "",
+    maxLength,
+    value = "",
 }) => {
     return (
         <View
@@ -57,9 +60,9 @@ const FormInput = ({
             <View
                 style={{
                     flexDirection: 'row',
-                    height: 55,
+                    height: SIZES.height > 800 ? 55 : 45,
                     paddingHorizontal: SIZES.padding,
-                    marginTop: SIZES.base,
+                    marginTop: SIZES.height > 800 ? SIZES.base : 0,
                     borderRadius: SIZES.radius,
                     backgroundColor: COLORS.lightGray2
                 }}
@@ -71,12 +74,14 @@ const FormInput = ({
                         flex: 1,
                         ...inputStyle
                     }}
+                    value={value}
                     placeholder={placeholder}
                     placeholderTextColor={COLORS.gray}
                     secureTextEntry={secureTextEntry}
                     keyboardType={keyboardType}
                     autoCompleteType={autoCompleteType}
                     autoCapitalize={autoCapitalize}
+                    maxLength={maxLength}
                     onChangeText={(text) => onChange(text)}
                 />
 
