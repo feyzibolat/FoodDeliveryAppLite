@@ -47,6 +47,7 @@ const SignUp = ({ navigation }) => {
             >
                 <FormInput
                     label="Email"
+                    value={email}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     onChange={(value) => {
@@ -74,6 +75,7 @@ const SignUp = ({ navigation }) => {
 
                 <FormInput
                     label="Username"
+                    value={username}
                     containerStyle={{
                         marginTop: SIZES.radius
                     }}
@@ -102,6 +104,7 @@ const SignUp = ({ navigation }) => {
 
                 <FormInput
                     label="Password"
+                    value={password}
                     secureTextEntry={!showPass}
                     autoCompleteType="password"
                     containerStyle={{

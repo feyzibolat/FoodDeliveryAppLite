@@ -45,6 +45,7 @@ const SignIn = ({ navigation }) => {
                     label="Email"
                     keyboardType="email-address"
                     autoCompleteType="email"
+                    value={email}
                     onChange={(value) => {
                         utils.validateEmail(value, setEmailError)
                         setEmail(value)
@@ -70,6 +71,7 @@ const SignIn = ({ navigation }) => {
 
                 <FormInput
                     label="Password"
+                    value={password}
                     secureTextEntry={!showPass}
                     autoCompleteType="password"
                     containerStyle={{
